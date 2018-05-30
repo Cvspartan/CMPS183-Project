@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>Pie Chart</title>
+	<script src="../../dist/Chart.bundle.js"></script>
+	<script src="../utils.js"></script>
+</head>
+
+<body>
+	<div id="canvas-holder" style="width:40%">
+		<canvas id="chart-area"></canvas>
+	</div>
+	<script>
+		var randomScalingFactor = function() {
+			return Math.round(Math.random() * 100);
+		};
+
+		var config = {
+			type: 'pie',
+			data: {
+				datasets: [{
+					data: [
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+					],
+					backgroundColor: [
+						window.chartColors.red,
+						window.chartColors.orange,
+						window.chartColors.yellow,
+						window.chartColors.green,
+						window.chartColors.blue,
+					],
+					label: 'Dataset 1'
+				}],
+				labels: [
+					'Abs',
+					'Chest',
+					'Triceps',
+					'Shoulders',
+					'Biceps'
+				]
+			},
+			options: {
+				responsive: true
+			}
+		};
+
+		window.onload = function() {
+			var ctx = document.getElementById('chart-area').getContext('2d');
+			window.myPie = new Chart(ctx, config);
+            addData(myPie, 'hello', 12, window.chartColors.purple);
+		};
+        
+        function addData(chart, label, data, color) {
+            chart.data.labels.push(label);
+            chart.data.datasets.forEach((dataset) => {
+                dataset.data.push(data);
+                dataset.backgroundColor.push(color);
+            });
+            chart.update();
+        }
+
+		
+	</script>
+</body>
+
+</html>
