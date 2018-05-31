@@ -6,7 +6,7 @@
       <change beforePath="$PROJECT_DIR$/web2py/applications/FitViz/controllers/default.py" beforeDir="false" afterPath="$PROJECT_DIR$/web2py/applications/FitViz/controllers/default.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web2py/applications/FitViz/databases/storage.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/web2py/applications/FitViz/databases/storage.sqlite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web2py/applications/FitViz/views/default/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web2py/applications/FitViz/views/default/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web2py/applications/admin/sessions/0de/0be/127.0.0.1-e81f2e83-0a18-4089-99c8-f2fd1e264313" beforeDir="false" afterPath="$PROJECT_DIR$/web2py/applications/admin/sessions/0de/0be/127.0.0.1-e81f2e83-0a18-4089-99c8-f2fd1e264313" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web2py/applications/admin/sessions/026/168/127.0.0.1-b98e7247-e9f8-4a8f-9e24-059a6b13e92a" beforeDir="false" afterPath="$PROJECT_DIR$/web2py/applications/admin/sessions/026/168/127.0.0.1-b98e7247-e9f8-4a8f-9e24-059a6b13e92a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web2py/httpserver.log" beforeDir="false" afterPath="$PROJECT_DIR$/web2py/httpserver.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web2py/httpserver.pid" beforeDir="false" afterPath="$PROJECT_DIR$/web2py/httpserver.pid" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web2py/parameters_8000.py" beforeDir="false" afterPath="$PROJECT_DIR$/web2py/parameters_8000.py" afterDir="false" />
@@ -23,8 +23,17 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web2py/applications/FitViz/views/default/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="67" selection-start-line="15" selection-start-column="67" selection-end-line="15" selection-end-column="67" />
+            <state relative-caret-position="173">
+              <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="addWorkout.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web2py/applications/FitViz/views/default/addWorkout.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -50,8 +59,8 @@
       <file leaf-file-name="add.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web2py/applications/FitViz/views/default/add.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state>
+              <caret selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -68,8 +77,8 @@
       <file leaf-file-name="default.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web2py/applications/FitViz/controllers/default.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-392">
-              <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+            <state relative-caret-position="438">
+              <caret line="116" column="14" selection-start-line="116" selection-start-column="14" selection-end-line="116" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -100,9 +109,10 @@
       <list>
         <option value="$PROJECT_DIR$/web2py/applications/FitViz/static/css/custom.css" />
         <option value="$PROJECT_DIR$/web2py/applications/FitViz/views/default/add.html" />
-        <option value="$PROJECT_DIR$/web2py/applications/FitViz/views/default/index.html" />
-        <option value="$PROJECT_DIR$/web2py/applications/FitViz/controllers/default.py" />
         <option value="$PROJECT_DIR$/web2py/applications/FitViz/views/default/viewData.html" />
+        <option value="$PROJECT_DIR$/web2py/applications/FitViz/views/default/addData.html" />
+        <option value="$PROJECT_DIR$/web2py/applications/FitViz/controllers/default.py" />
+        <option value="$PROJECT_DIR$/web2py/applications/FitViz/views/default/index.html" />
       </list>
     </option>
   </component>
@@ -113,8 +123,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1284" />
-    <option name="y" value="-48" />
+    <option name="x" value="-19" />
+    <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="777" />
   </component>
@@ -284,7 +294,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1284" y="-48" width="1916" height="1177" extended-state="6" />
+    <frame x="-1" y="23" width="1280" height="777" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -294,7 +304,7 @@
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17129135" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26332796" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -317,6 +327,55 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/web2py/applications/FitViz/views/default/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web2py/applications/FitViz/views/default/user.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web2py/applications/FitViz/views/default/viewData.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="24" selection-start-column="24" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web2py/applications/FitViz/views/default/add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web2py/applications/FitViz/views/layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web2py/applications/FitViz/controllers/default.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web2py/applications/FitViz/models/tables.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web2py/applications/FitViz/views/default/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -344,9 +403,6 @@
           <caret line="30" column="19" lean-forward="true" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web2py/applications/FitViz/controllers/default.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/web2py/applications/FitViz/models/tables.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -381,10 +437,10 @@
         <state relative-caret-position="-3627" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web2py/applications/FitViz/views/default/viewData.html">
+    <entry file="file://$PROJECT_DIR$/web2py/applications/FitViz/models/tables.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="24" selection-start-column="24" selection-end-column="24" />
+        <state relative-caret-position="210">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
@@ -395,10 +451,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web2py/applications/FitViz/views/default/viewData.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="24" selection-start-column="24" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web2py/applications/FitViz/views/default/add.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state>
+          <caret selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -411,22 +474,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web2py/applications/FitViz/controllers/default.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-392">
-          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+        <state relative-caret-position="438">
+          <caret line="116" column="14" selection-start-line="116" selection-start-column="14" selection-end-line="116" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web2py/applications/FitViz/models/tables.py">
+    <entry file="file://$PROJECT_DIR$/web2py/applications/FitViz/views/default/addWorkout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="135">
+          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web2py/applications/FitViz/views/default/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="67" selection-start-line="15" selection-start-column="67" selection-end-line="15" selection-end-column="67" />
+        <state relative-caret-position="173">
+          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
         </state>
       </provider>
     </entry>

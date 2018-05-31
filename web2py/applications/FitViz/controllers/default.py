@@ -105,7 +105,6 @@ def download():
     """
     return response.download(request, db)
 
-
 def call():
     """
     exposes services. for example:
@@ -114,6 +113,9 @@ def call():
     supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv
     """
     return service()
+
+def addWorkout():
+    return dict(form=auth())
 
 def viewData():
     return dict(form=auth())

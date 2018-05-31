@@ -5,11 +5,10 @@
 
 <div class="main_content">
 
-  <!-- Here goes your main HTML code. -->
   {{if auth.user is not None:}}
 
   <div class="add_btn">
-    <a class="btn red rounded" href="{{=URL('default', 'add')}}"><i class="fa fa-plus"></i> Add Workout</a>
+    <a class="btn red rounded" href="{{=URL('default', 'addWorkout')}}"><i class="fa fa-plus"></i> Add Workout</a>
   </div>
 
     <div class="add_btn">
@@ -35,12 +34,6 @@
           </div>
         </div>
       </div>
-  {{pass}}
-
-  {{if not checklists:}}
-
-    <p>You don't have any checklist.  Press on the Add button above to create one.</p>
-
   {{pass}}
 
   {{else:}}
