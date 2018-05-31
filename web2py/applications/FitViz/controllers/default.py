@@ -115,4 +115,7 @@ def call():
     """
     return service()
 
+def viewData():
+    return dict(form=auth())
+
 
