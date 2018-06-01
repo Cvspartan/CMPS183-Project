@@ -11,6 +11,16 @@
 	<div id="canvas-holder" style="width:40%">
 		<canvas id="chart-area"></canvas>
 	</div>
+    <select id = inputExercise>
+        <option value="biceps">Biceps</option>
+        <option value="triceps">Triceps</option>
+        <option value="chest">Chest</option>
+        <option value="shoulders">Shoulders</option>
+        <option value="back">Back</option>
+        <option value="legs">Legs</option>
+    </select>
+    <textarea id = inputAmount rows="1"></textarea>
+    <button type="button" onclick="buttonPress()">Add Data</button>
 	<script>
 		var randomScalingFactor = function() {
 			return Math.round(Math.random() * 100);
@@ -21,11 +31,6 @@
 			data: {
 				datasets: [{
 					data: [
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
 					],
 					backgroundColor: [
 						window.chartColors.red,
@@ -33,15 +38,11 @@
 						window.chartColors.yellow,
 						window.chartColors.green,
 						window.chartColors.blue,
+                        window.chartColors.purple
 					],
 					label: 'Dataset 1'
 				}],
 				labels: [
-					'Abs',
-					'Chest',
-					'Triceps',
-					'Shoulders',
-					'Biceps'
 				]
 			},
 			options: {
@@ -52,14 +53,19 @@
 		window.onload = function() {
 			var ctx = document.getElementById('chart-area').getContext('2d');
 			window.myPie = new Chart(ctx, config);
-            addData(myPie, 'hello', 12, window.chartColors.purple);
 		};
         
-        function addData(chart, label, data, color) {
+        function buttonPress(){
+            var exercise = document.getElementById("inputExercise").value;
+            var amount = document.getElementById("inputAmount").value;
+            addData(myPie, exercise, amount);
+        }
+        
+        function addData(chart, label, data) {
             chart.data.labels.push(label);
             chart.data.datasets.forEach((dataset) => {
                 dataset.data.push(data);
-                dataset.backgroundColor.push(color);
+                //dataset.backgroundColor.push(color);
             });
             chart.update();
         }
