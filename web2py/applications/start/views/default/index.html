@@ -1,0 +1,30 @@
+{{extend 'layout.html'}}
+
+{{block head}}
+{{end}}
+
+<div class="main_content">
+
+  {{if auth.user is not None:}}
+
+    <div class="add_btn">
+        <a class="btn white large" href="{{=URL('default','addWorkout')}}"><i class="fa fa-plus"></i> Add Workout</a>
+    </div>
+
+    <div class="add_btn">
+        <a class="btn black large" href="{{=URL('default','viewData')}}"><i class="fa fa-plus"></i> View Workout Data</a>
+    </div>
+
+    {{else:}}
+
+    <h1 class="main_title">Welcome!</h1>
+
+    <p class="explanation">This site will help you organize your workouts with data visualization.</p>
+
+    <div class="login_button">
+        <a href="{{=URL('default', 'user')}}" class="btn">Login</a>
+    </div>
+
+  {{pass}}
+
+</div>
