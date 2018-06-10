@@ -34,18 +34,13 @@ var app = function() {
     self.add_memo = function(){
         $.post(add_memo_url,
             {
-                title: self.vue.form_title,
-                memo_content: self.vue.form_memo_content,
                 reps: self.vue.rep_amount,
                 name: self.vue.workout_name
             },
             function(data){
                 $.web2py.enableElement($("#add_memo_submit"));
-                self.vue.is_adding_memo = false;
                 self.vue.memos.unshift(data.memo);
                 enumerate(self.vue.memos);
-                self.vue.form_title = "";
-                self.vue.form_memo_content= "";
             });
 
     };
@@ -71,40 +66,6 @@ var app = function() {
         )
     };
 
-    self.edit_memo_button = function(memo_id, title, memo_content){
-        self.vue.is_editing_memo = memo_id;
-        self.vue.edit_title = title;
-        self.vue.edit_memo_content = memo_content;
-    };
-
-    self.edit_memo = function(memo_id){
-        $.post(edit_memo_url,
-            {
-                memo_id: memo_id,
-                edit_title: self.vue.edit_title,
-                edit_memo_content: self.vue.edit_memo_content
-            },
-            function(data){
-                var idx = null;
-                for(var i = 0; i < self.vue.memos.length; i++){
-                    if(memo_id == self.vue.memos[i].id){
-                        idx = i;
-                        break;
-                    }
-                }
-                self.vue.memos[idx].title = data.memo.title;
-                self.vue.memos[idx].memo_content = data.memo.memo_content;
-                self.vue.is_editing_memo = 0;
-                self.vue.edit_title = null;
-                self.vue.edit_memo_content = null;
-            }
-        )
-    };
-
-    self.cancel_edit = function(){
-        self.vue.edit_title = null;
-        self.vue.edit_memo_content = null;
-    };
 
     // Complete as needed.
     self.vue = new Vue({
@@ -112,24 +73,14 @@ var app = function() {
         delimiters: ['${', '}'],
         unsafeDelimiters: ['!{', '}'],
         data: {
-            is_adding_memo: false,
-            is_editing_memo: 0,
             logged_in: false,
             memos: [],
-            form_title: null,
-            form_memo_content: null,
-            edit_title: null,
-            edit_memo_content: null,
             rep_amount: 0,
             workout_name: null
         },
         methods: {
             add_memo: self.add_memo,
-            cancel_edit: self.cancel_edit,
             delete_memo: self.delete_memo,
-            edit_memo_button: self.edit_memo_button,
-            edit_memo: self.edit_memo,
-
         }
 
     });

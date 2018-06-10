@@ -18,26 +18,18 @@
             <b>Exercise: </b>
         </div>
         <div id="add_memo_div">
-            <textarea v-model="form_title" rows="1" cols="50"></textarea>
+            <select v-model="workout_name">
+                <option value="Deadlift">Deadlift</option>
+                <option value="Squat">Squat</option>
+                <option value="Bench press">Bench Press</option>
+            </select>
         </div>
-        <div id="add_memo_div">
-            <b>Memo </b>
-        </div>
-        <div id="add_memo_div">
-            <textarea v-model="form_memo_content" rows="5" cols="50"></textarea>
-        </div>
+
         <div id="add_memo_div">
             <b>Reps: </b>
         </div>
         <div id="add_memo_div">
             <input v-model="rep_amount" type="number" min=0 placeholder="Enter the amount of reps!">
-        </div>
-        <div id="add_memo_div">
-            <select v-model="workout_name">
-                <option value="deadlift">Deadlift</option>
-                <option value="squat">Squat</option>
-                <option value="benchpress">Bench Press</option>
-            </select>
         </div>
 
         <div class="button_bar">
@@ -49,7 +41,7 @@
     </div>
 
     <div class="button_bar">
-        <a class="btn lime large" href="{{=URL('default','index')}}"><i class="fa fa-plus"></i> Go Back</a>
+        <a class="btn aqua large" href="{{=URL('default','index')}}"><i class="fa fa-plus"></i> Go Back</a>
         <a class="btn black large" href="{{=URL('default','viewData')}}"><i class="fa fa-calendar"></i> View Workout Data</a>
     </div>
 </div>

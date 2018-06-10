@@ -6,7 +6,6 @@
     var get_memos_url = "{{=URL('api', 'get_memos')}}";
     var add_memo_url = "{{=URL('api', 'add_memo', user_signature=True)}}";
     var delete_memo_url = "{{=URL('api', 'delete_memo', user_signature=True)}}";
-    var edit_memo_url = "{{=URL('api', 'edit_memo', user_signature=True)}}";
 </script>
 {{end}}
 
@@ -17,62 +16,17 @@
         <div class="memo_list">
             <div v-for="memo in memos">
                 <div class="memo">
-                    <div v-if="memo.id != is_editing_memo">
-                        <div class="memo_text">
-                            <div class="memo_title">
-                                ${memo.title}
-                            </div>
-                            <div class="memo_content">
-                                ${memo.memo_content}
-                            </div>
-                            <p>
-                                ${memo.reps}
-                            </p>
-                            <p>
-                                ${memo.name}
-                            </p>
+                    <div class="memo_text">
+                        <div class="memo_name">
+                            ${memo.name}
                         </div>
-
-                        {{if auth.user is not None:}}
-
-                        <div v-if="memo.user_email == '{{=auth.user.email}}'" class="button_list">
-                            <button class="btn rounded black" v-on:click="edit_memo_button(memo.id, memo.title, memo.memo_content)">
-                                <i class="fa fa-edit fa-lg"></i>
-                            </button>
-                            <button class="btn rounded red" v-on:click="delete_memo(memo.id)">
-                                <i class="fa fa-trash fa-lg"></i>
-                            </button>
-                         </div>
-
-                        {{else:}}
-
-                        {{pass}}
-
+                        <p>
+                            ${memo.reps} reps
+                        </p>
                     </div>
-                    <div v-if="memo.id == is_editing_memo">
-                        <b>Title</b>
-                    </div>
-                    <div v-if="memo.id == is_editing_memo">
-                        <textarea v-model="edit_title" rows="1" cols="50">
-                            ${edit_title}
-                        </textarea>
-                    </div>
-                    <div v-if="memo.id == is_editing_memo">
-                        <b>Memo</b>
-                    </div>
-                    <div v-if="memo.id == is_editing_memo">
-                        <textarea v-model="edit_memo_content" rows="5" cols="50">
-                            ${edit_memo_content}
-                        </textarea>
-                    </div>
-                    <div class="button_bar">
-                        <button v-if="memo.id == is_editing_memo" class="btn rounded red"
-                            v-on:click="edit_memo(memo.id)">
-                            <i click="fa fa-plus"></i> Submit
-                        </button>
-                        <button v-if="memo.id == is_editing_memo" class="btn rounded red"
-                        v-on:click="edit_memo_button(0), cancel_edit(null)">
-                            <i class="fa fa-times"></i> Cancel
+                    <div class = button_list>
+                        <button class="btn rounded red" v-on:click="delete_memo(memo.id)">
+                            <i class="fa fa-trash fa-lg"></i>
                         </button>
                     </div>
                 </div>

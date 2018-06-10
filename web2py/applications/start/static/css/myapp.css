@@ -24,7 +24,7 @@ div.memo {
   padding: 5px;
 }
 /* line 21, ../sass/_main.scss */
-div.memo div.memo_title {
+div.memo div.memo_name {
   font-weight: bold;
   font-size: 150%;
 }

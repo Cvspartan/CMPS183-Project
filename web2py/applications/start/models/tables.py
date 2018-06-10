@@ -14,8 +14,6 @@ def get_user_email():
 
 db.define_table('memo',
                 Field('user_email', default=get_user_email()),
-                Field('title'),
-                Field('memo_content', 'text'),
                 Field('updated_on', 'datetime', update=datetime.datetime.utcnow()),
                 Field('reps', 'float'),
                 Field('name')

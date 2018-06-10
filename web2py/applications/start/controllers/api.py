@@ -12,8 +12,6 @@ def get_memos():
             t = dict(
                 id = r.id,
                 user_email = r.user_email,
-                title = r.title,
-                memo_content = r.memo_content,
                 reps = r.reps,
                 name = r.name
             )
@@ -27,8 +25,6 @@ def get_memos():
 @auth.requires_signature()
 def add_memo():
     workout_id = db.memo.insert(
-        title = request.vars.title,
-        memo_content = request.vars.memo_content,
         reps = request.vars.reps,
         name = request.vars.name
     )
@@ -40,15 +36,3 @@ def delete_memo():
     db(db.memo.id == request.vars.memo_id).delete()
     return "ok"
 
-@auth.requires_signature()
-def edit_memo():
-    row = db(db.memo.id == request.vars.memo_id).select().first()
-    row.update_record(title = request.vars.edit_title)
-    row.update_record(memo_content = request.vars.edit_memo_content)
-    c = db.memo(request.vars.memo_id)
-    l = dict(
-        id = c.id,
-        title = c.title,
-        memo_content = c.memo_content
-    )
-    return response.json(dict(memo=l))
