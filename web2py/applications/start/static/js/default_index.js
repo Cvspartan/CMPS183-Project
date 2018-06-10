@@ -26,30 +26,18 @@ var app = function() {
     self.get_memos = function(){
         $.getJSON(get_memo_url(0,10), function(data){
             self.vue.memos = data.memos;
-            self.vue.has_more = data.has_more;
             self.vue.logged_in = data.logged_in;
             enumerate(self.vue.memos);
         })
-    };
-
-    self.get_more = function(){
-        var num_memos = self.vue.memos.length;
-        $.getJSON(get_memos_url(num_memos, num_memos + 10), function(data){
-            self.vue.has_more = data.has_more;
-            self.extend(self.vue.memos, data.memos);
-            enumerate(self.vue.memos);
-        });
-    };
-
-    self.add_memo_button = function(){
-        self.vue.is_adding_memo = true;
     };
 
     self.add_memo = function(){
         $.post(add_memo_url,
             {
                 title: self.vue.form_title,
-                memo_content: self.vue.form_memo_content
+                memo_content: self.vue.form_memo_content,
+                reps: self.vue.rep_amount,
+                name: self.vue.workout_name
             },
             function(data){
                 $.web2py.enableElement($("#add_memo_submit"));
@@ -60,10 +48,6 @@ var app = function() {
                 self.vue.form_memo_content= "";
             });
 
-    };
-
-    self.cancel_add_memo = function(){
-        self.vue.is_adding_memo = false;
     };
 
     self.delete_memo = function(memo_id){
@@ -122,20 +106,6 @@ var app = function() {
         self.vue.edit_memo_content = null;
     };
 
-    self.toggle_visibility = function(memo_idx){
-        var temp = self.vue.memos[memo_idx];
-        temp.is_public = !temp.is_public;
-        $.post(toggle_visibility_url,
-            {
-                memo_id: temp.id,
-                is_public: temp.is_public
-            },
-            function(){
-            }
-        )
-
-    };
-
     // Complete as needed.
     self.vue = new Vue({
         el: "#vue-div",
@@ -145,22 +115,20 @@ var app = function() {
             is_adding_memo: false,
             is_editing_memo: 0,
             logged_in: false,
-            has_more:false,
             memos: [],
             form_title: null,
             form_memo_content: null,
             edit_title: null,
             edit_memo_content: null,
+            rep_amount: 0,
+            workout_name: null
         },
         methods: {
-            add_memo_button: self.add_memo_button,
             add_memo: self.add_memo,
-            cancel_add_memo: self.cancel_add_memo,
             cancel_edit: self.cancel_edit,
             delete_memo: self.delete_memo,
             edit_memo_button: self.edit_memo_button,
             edit_memo: self.edit_memo,
-            toggle_visibility: self.toggle_visibility
 
         }
 

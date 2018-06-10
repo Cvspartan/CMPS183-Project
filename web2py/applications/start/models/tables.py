@@ -17,7 +17,8 @@ db.define_table('memo',
                 Field('title'),
                 Field('memo_content', 'text'),
                 Field('updated_on', 'datetime', update=datetime.datetime.utcnow()),
-                Field('is_public', 'boolean', default=False)
+                Field('reps', 'float'),
+                Field('name')
                 )
 
 # after defining tables, uncomment below to enable auditing

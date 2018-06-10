@@ -7,48 +7,50 @@
     var add_memo_url = "{{=URL('api', 'add_memo', user_signature=True)}}";
     var delete_memo_url = "{{=URL('api', 'delete_memo', user_signature=True)}}";
     var edit_memo_url = "{{=URL('api', 'edit_memo', user_signature=True)}}";
-    var toggle_visibility_url = "{{=URL('api', 'toggle_visibility', user_signature=True)}}";
 </script>
 {{end}}
 
 <div class="main_content">
 
     <div id="vue-div" class="display:none">
-        <!-- Your code goes here.  Remember to call $("#vue-div").show() once you get the data for the first time. -->
 
-        <div v-if="is_adding_memo" id="add_memo_div">
-            <b>Title</b>
+        <div id="add_memo_div">
+            <b>Exercise: </b>
         </div>
-        <div v-if="is_adding_memo" id="add_memo_div">
+        <div id="add_memo_div">
             <textarea v-model="form_title" rows="1" cols="50"></textarea>
         </div>
-        <div v-if="is_adding_memo" id="add_memo_div">
-            <b>Memo</b>
+        <div id="add_memo_div">
+            <b>Memo </b>
         </div>
-        <div v-if="is_adding_memo" id="add_memo_div">
+        <div id="add_memo_div">
             <textarea v-model="form_memo_content" rows="5" cols="50"></textarea>
+        </div>
+        <div id="add_memo_div">
+            <b>Reps: </b>
+        </div>
+        <div id="add_memo_div">
+            <input v-model="rep_amount" type="number" min=0 placeholder="Enter the amount of reps!">
+        </div>
+        <div id="add_memo_div">
+            <select v-model="workout_name">
+                <option value="deadlift">Deadlift</option>
+                <option value="squat">Squat</option>
+                <option value="benchpress">Bench Press</option>
+            </select>
         </div>
 
         <div class="button_bar">
-            <button v-if="!is_adding_memo" class ="btn rounded red"
-                    v-on:click="add_memo_button()"
-                    :disabled="!logged_in"
-                    v-bind:class="{'disabled': !logged_in}">
-                    <i class="fa fa-plus"></i> Add Memo
-            </button>
-            <button v-if="is_adding_memo" class="btn rounded red"
+            <button class="btn rounded red"
                     v-on:click="add_memo()">
-                    <i class="fa fa-plus"></i> Add
-            </button>
-            <button v-if="is_adding_memo" class="btn rounded red"
-                    v-on:click="cancel_add_memo()">
-                    <i class="fa fa-times"></i> Cancel
+                    <i class="fa fa-plus"></i> Submit
             </button>
         </div>
     </div>
 
-    <div class="add_btn">
-        <a class="btn black large" href="{{=URL('default','viewData')}}"><i class="fa fa-plus"></i> View Workout Data</a>
+    <div class="button_bar">
+        <a class="btn lime large" href="{{=URL('default','index')}}"><i class="fa fa-plus"></i> Go Back</a>
+        <a class="btn black large" href="{{=URL('default','viewData')}}"><i class="fa fa-calendar"></i> View Workout Data</a>
     </div>
 </div>
 
