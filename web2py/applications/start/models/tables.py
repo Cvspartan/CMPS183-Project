@@ -12,11 +12,11 @@ import datetime
 def get_user_email():
     return auth.user.email if auth.user else None
 
-db.define_table('memo',
+db.define_table('workout',
                 Field('user_email', default=get_user_email()),
                 Field('updated_on', 'datetime', update=datetime.datetime.utcnow()),
-                Field('reps', 'float'),
-                Field('name')
+                Field('name'),
+                Field('reps', 'float')
                 )
 
 # after defining tables, uncomment below to enable auditing

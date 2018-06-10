@@ -3,10 +3,8 @@
 {{block head}}
 <script src="{{=URL('static', 'js/vue.js')}}"></script>
 <script>
-    var get_memos_url = "{{=URL('api', 'get_memos')}}";
-    var add_memo_url = "{{=URL('api', 'add_memo', user_signature=True)}}";
-    var delete_memo_url = "{{=URL('api', 'delete_memo', user_signature=True)}}";
-    var edit_memo_url = "{{=URL('api', 'edit_memo', user_signature=True)}}";
+    var get_workouts_url = "{{=URL('api', 'get_workouts')}}";
+    var add_workout_url = "{{=URL('api', 'add_workout', user_signature=True)}}";
 </script>
 {{end}}
 
@@ -14,10 +12,10 @@
 
     <div id="vue-div" class="display:none">
 
-        <div id="add_memo_div">
+        <div>
             <b>Exercise: </b>
         </div>
-        <div id="add_memo_div">
+        <div>
             <select v-model="workout_name">
                 <option value="Deadlift">Deadlift</option>
                 <option value="Squat">Squat</option>
@@ -25,23 +23,23 @@
             </select>
         </div>
 
-        <div id="add_memo_div">
+        <div>
             <b>Reps: </b>
         </div>
-        <div id="add_memo_div">
+        <div>
             <input v-model="rep_amount" type="number" min=0 placeholder="Enter the amount of reps!">
         </div>
 
         <div class="button_bar">
-            <button class="btn rounded red"
-                    v-on:click="add_memo()">
+            <button class="btn rounded lime"
+                    v-on:click="add_workout()">
                     <i class="fa fa-plus"></i> Submit
             </button>
         </div>
     </div>
 
     <div class="button_bar">
-        <a class="btn aqua large" href="{{=URL('default','index')}}"><i class="fa fa-plus"></i> Go Back</a>
+        <a class="btn aqua large" href="{{=URL('default','index')}}"><i class="fa fa-rotate-left"></i> Go Back</a>
         <a class="btn black large" href="{{=URL('default','viewData')}}"><i class="fa fa-calendar"></i> View Workout Data</a>
     </div>
 </div>

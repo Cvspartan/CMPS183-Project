@@ -15,52 +15,52 @@ var app = function() {
 
     var enumerate = function(v) { var k=0; return v.map(function(e) {e._idx = k++;});};
 
-    function get_memo_url(start_idx, end_idx){
+    function get_workout_url(start_idx, end_idx){
         var pp ={
             start_idx: start_idx,
             end_idx: end_idx
         };
-        return get_memos_url + "?" + $.param(pp)
+        return get_workouts_url + "?" + $.param(pp)
     }
 
-    self.get_memos = function(){
-        $.getJSON(get_memo_url(0,10), function(data){
-            self.vue.memos = data.memos;
+    self.get_workouts = function(){
+        $.getJSON(get_workout_url(0,10), function(data){
+            self.vue.workouts = data.workouts;
             self.vue.logged_in = data.logged_in;
-            enumerate(self.vue.memos);
+            enumerate(self.vue.workouts);
         })
     };
 
-    self.add_memo = function(){
-        $.post(add_memo_url,
+    self.add_workout = function(){
+        $.post(add_workout_url,
             {
                 reps: self.vue.rep_amount,
                 name: self.vue.workout_name
             },
             function(data){
-                $.web2py.enableElement($("#add_memo_submit"));
-                self.vue.memos.unshift(data.memo);
-                enumerate(self.vue.memos);
+                $.web2py.enableElement($("#add_workout_submit"));
+                self.vue.workouts.unshift(data.workout);
+                enumerate(self.vue.workouts);
             });
 
     };
 
-    self.delete_memo = function(memo_id){
-        $.post(delete_memo_url,
+    self.delete_workout = function(workout_id){
+        $.post(delete_workout_url,
             {
-                memo_id: memo_id
+                workout_id: workout_id
             },
             function(){
                 var idx = null;
-                for(var i = 0; i < self.vue.memos.length;i++){
-                    if(memo_id == self.vue.memos[i].id){
+                for(var i = 0; i < self.vue.workouts.length;i++){
+                    if(workout_id == self.vue.workouts[i].id){
                         idx = i + 1;
                         break;
                     }
                 }
                 if(idx){
-                    self.vue.memos.splice(idx - 1, 1);
-                    enumerate(self.vue.memos);
+                    self.vue.workouts.splice(idx - 1, 1);
+                    enumerate(self.vue.workouts);
                 }
             }
         )
@@ -74,18 +74,18 @@ var app = function() {
         unsafeDelimiters: ['!{', '}'],
         data: {
             logged_in: false,
-            memos: [],
+            workouts: [],
+            workout_name: null,
             rep_amount: 0,
-            workout_name: null
         },
         methods: {
-            add_memo: self.add_memo,
-            delete_memo: self.delete_memo,
+            add_workout: self.add_workout,
+            delete_workout: self.delete_workout,
         }
 
     });
 
-    self.get_memos();
+    self.get_workouts();
     $("#vue-div").show();
 
     return self;
