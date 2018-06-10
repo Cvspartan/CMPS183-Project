@@ -13,7 +13,8 @@ def get_workouts():
                 id = r.id,
                 user_email = r.user_email,
                 name=r.name,
-                reps = r.reps
+                reps = r.reps,
+                weight = r.weight
             )
             workouts.append(t)
     logged_in = auth.user is not None
@@ -25,8 +26,9 @@ def get_workouts():
 @auth.requires_signature()
 def add_workout():
     workout_id = db.workout.insert(
-        name=request.vars.name,
+        name = request.vars.name,
         reps = request.vars.reps,
+        weight = request.vars.weight
     )
     temp = db.workout(workout_id)
     return response.json(dict(workout=temp))

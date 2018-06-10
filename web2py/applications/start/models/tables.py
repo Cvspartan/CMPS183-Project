@@ -16,6 +16,7 @@ db.define_table('workout',
                 Field('user_email', default=get_user_email()),
                 Field('updated_on', 'datetime', update=datetime.datetime.utcnow()),
                 Field('name'),
+                Field('weight', 'float'),
                 Field('reps', 'float')
                 )
 

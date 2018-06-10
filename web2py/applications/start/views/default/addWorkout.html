@@ -19,10 +19,15 @@
             <select v-model="workout_name">
                 <option value="Deadlift">Deadlift</option>
                 <option value="Squat">Squat</option>
-                <option value="Bench press">Bench Press</option>
+                <option value="Bench Press">Bench Press</option>
             </select>
         </div>
-
+        <div>
+            <b>Weight: </b>
+        </div>
+        <div>
+            <input v-model="weight_amount" type="number" min=0 placeholder="Enter the weight used in lbs">
+        </div>
         <div>
             <b>Reps: </b>
         </div>
