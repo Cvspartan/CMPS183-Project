@@ -9,7 +9,7 @@
 
     <div class="button_bar center">
         <a class="btn btn-danger large" href="{{=URL('default','addWorkout')}}"><i class="fa fa-plus"></i> Add Workout</a>
-        <a class="btn btn-inverse large" href="{{=URL('default','viewData')}}"><i class="fa fa-calendar"></i> View Workout Data</a>
+        <a class="btn btn-primary large" href="{{=URL('default','viewData')}}"><i class="fa fa-calendar"></i> View Workout Data</a>
     </div>
 
     {{else:}}
@@ -19,7 +19,7 @@
     <p class="explanation">This site will help you organize your workouts with data visualization.</p>
 
     <div class="login_button">
-        <a href="{{=URL('default', 'user')}}" class="btn">Login</a>
+        <a class="btn btn-warning" href="{{=URL('default', 'user')}}">Login</a>
     </div>
 
   {{pass}}
