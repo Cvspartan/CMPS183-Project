@@ -48,3 +48,7 @@ button:disabled:hover {
   box-shadow: none;
 }
 
+div.button_bar{
+  margin-top: 20px;
+}
+

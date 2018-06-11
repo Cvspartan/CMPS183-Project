@@ -523,3 +523,17 @@ success!
 timestamp: 2018-06-10T14:26:47.696092
 ALTER TABLE "workout" ADD "weight" DOUBLE;
 success!
+timestamp: 2018-06-11T10:47:22.958887
+ALTER TABLE "workout" ADD "total" DOUBLE;
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!

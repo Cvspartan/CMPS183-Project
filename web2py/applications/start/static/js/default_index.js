@@ -78,7 +78,7 @@ var app = function() {
             workouts: [],
             workout_name: null,
             weight_amount: 0,
-            rep_amount: 0,
+            rep_amount: 0
         },
         methods: {
             add_workout: self.add_workout,
