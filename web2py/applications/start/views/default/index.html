@@ -7,12 +7,9 @@
 
   {{if auth.user is not None:}}
 
-    <div class="add_btn">
-        <a class="btn aqua large" href="{{=URL('default','addWorkout')}}"><i class="fa fa-plus"></i> Add Workout</a>
-    </div>
-
-    <div class="add_btn">
-        <a class="btn black large" href="{{=URL('default','viewData')}}"><i class="fa fa-calendar"></i> View Workout Data</a>
+    <div class="button_bar center">
+        <a class="btn btn-danger large" href="{{=URL('default','addWorkout')}}"><i class="fa fa-plus"></i> Add Workout</a>
+        <a class="btn btn-inverse large" href="{{=URL('default','viewData')}}"><i class="fa fa-calendar"></i> View Workout Data</a>
     </div>
 
     {{else:}}

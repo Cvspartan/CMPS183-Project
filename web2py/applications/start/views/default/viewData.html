@@ -27,15 +27,15 @@
                         </p>
                     </div>
                     <div class = button_list>
-                        <button class="btn rounded red" v-on:click="delete_workout(workout.id)">
+                        <button class="btn btn-danger" v-on:click="delete_workout(workout.id)">
                             <i class="fa fa-trash fa-lg"></i>
                         </button>
                     </div>
                 </div>
              </div>
-            <div class="button_bar">
-                <a class="btn red large" href="{{=URL('default','addWorkout')}}"><i class="fa fa-plus"></i> Add Another Workout</a>
-                <a class="btn aqua large" href="{{=URL('default','index')}}"><i class="fa fa-rotate-left"></i> Main Menu</a>
+            <div class="button_bar center">
+                <a class="btn btn-danger large" href="{{=URL('default','addWorkout')}}"><i class="fa fa-plus"></i> Add Another Workout</a>
+                <a class="btn btn-primary large" href="{{=URL('default','index')}}"><i class="fa fa-rotate-left"></i> Main Menu</a>
             </div>
         </div>
     </div>
