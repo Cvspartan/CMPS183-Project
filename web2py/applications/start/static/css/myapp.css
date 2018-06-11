@@ -53,9 +53,12 @@ div.button_bar{
 }
 
 .centered {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  margin-left: -250px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -250px;
 }
 
+.title{
+    font-size: 1300%;
+}
