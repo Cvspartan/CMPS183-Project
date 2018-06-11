@@ -52,6 +52,7 @@ div.button_bar{
   margin-top: 20px;
 }
 
+
 div.select_box {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -84,6 +85,15 @@ div.reps{
   padding: 5px;
 
 }
+
+div.chart_img{
+  width: 30%;
+  height: 30%;
+}
+
+
+
+
 
 
 

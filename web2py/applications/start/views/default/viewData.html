@@ -27,18 +27,85 @@
                         </p>
                     </div>
                     <div class = button_list>
-                        <button class="btn btn-danger" v-on:click="delete_workout(workout.id)">
+                        <button class="btn rounded red" v-on:click="delete_workout(workout.id)">
                             <i class="fa fa-trash fa-lg"></i>
                         </button>
                     </div>
                 </div>
+                <!-- <button type="button" v-on:click="get_workouts()">Add Data</button> -->
              </div>
-            <div class="button_bar center">
-                <a class="btn btn-danger large" href="{{=URL('default','addWorkout')}}"><i class="fa fa-plus"></i> Add Another Workout</a>
-                <a class="btn btn-info large" href="{{=URL('default','index')}}"><i class="fa fa-rotate-left"></i> Main Menu</a>
+            <div class="button_bar">
+                <a class="btn red large" href="{{=URL('default','addWorkout')}}"><i class="fa fa-plus"></i> Add Another Workout</a>
+                <a class="btn aqua large" href="{{=URL('default','index')}}"><i class="fa fa-rotate-left"></i> Main Menu</a>
             </div>
         </div>
     </div>
 </div>
+<!-- <button type="button" onclick="buttonPress(workouts)">Add Data</button> -->
+<script src= "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+<div class = "chart_img">
+    <canvas id="myChart" width="10" height="10"></canvas>
+</div>
 
+<script>
+        
+        function get_workout_url(start_idx, end_idx){
+            var pp ={
+                start_idx: start_idx,
+                end_idx: end_idx
+            };
+            return get_workouts_url + "?" + $.param(pp)
+        }
+
+        function get_workouts(){
+            $.getJSON(get_workout_url(0,10), function(data){
+                for(var i = 0; i < data.workouts.length; i++){
+                    var n = data.workouts[i].name;
+                    var w = data.workouts[i].weight;
+                    var r = data.workouts[i].reps;
+                    addData(myPie, n, w, r);
+                }
+            })
+        };
+
+
+		window.onload = function() {
+			var ctx = document.getElementById('myChart').getContext('2d');
+			window.myPie = new Chart(ctx, config);
+			get_workouts();
+		};
+
+		var config = {
+			type: 'pie',
+			data: {
+				datasets: [{
+					data: [
+					],
+					backgroundColor: [
+						'rgba(255, 99, 132, 0.2)',
+                    	'rgba(54, 162, 235, 0.2)',
+                    	'rgba(255, 206, 86, 0.2)',
+                    	'rgba(75, 192, 192, 0.2)',
+                    	'rgba(153, 102, 255, 0.2)',
+                    	'rgba(255, 159, 64, 0.2)'
+					],
+					label: 'Dataset 1'
+				}],
+				labels: [
+				]
+			},
+			options: {
+				responsive: true
+			}
+		};
+
+        function addData(chart, label, data) {
+            chart.data.labels.push(label);
+            chart.data.datasets.forEach((dataset) => {
+                dataset.data.push(data);
+                //dataset.backgroundColor.push(color);
+            });
+            chart.update();
+        }
+	</script>
 <script src="{{=URL('static', 'js/default_index.js')}}"></script>
