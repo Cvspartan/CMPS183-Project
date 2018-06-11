@@ -52,6 +52,7 @@ div.button_bar{
   margin-top: 20px;
 }
 
+<<<<<<< HEAD
 
 div.select_box {
   -webkit-appearance: none;
@@ -98,3 +99,15 @@ div.chart_img{
 
 
 
+=======
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -250px;
+}
+
+.title{
+    font-size: 1300%;
+}
+>>>>>>> html
