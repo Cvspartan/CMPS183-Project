@@ -52,3 +52,36 @@ div.button_bar{
   margin-top: 20px;
 }
 
+div.select_box {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+
+  display: block;
+
+
+  border-radius: 4px;
+  border: 2px solid #FFF;
+
+  background: url("arrow3.png") no-repeat 98% center;
+
+  margin-bottom: 10px;
+
+}
+
+div.weight {
+  border-radius: 4px;
+  border: 2px solid #FFF;
+  margin-bottom: 10px;
+}
+
+div.reps{
+  border-radius: 4px;
+  border: 2px solid #FFF;
+
+}
+
+
+

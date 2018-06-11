@@ -15,8 +15,9 @@
         <div>
             <b>Exercise: </b>
         </div>
-        <div>
-            <select v-model="workout_name">
+        <div class = "select_box">
+            <select required v-model="workout_name">
+                <option value="" hidden>Select your exercise</option>
                 <option value="Deadlift">Deadlift</option>
                 <option value="Squat">Squat</option>
                 <option value="Bench Press">Bench Press</option>
@@ -25,13 +26,13 @@
         <div>
             <b>Weight: </b>
         </div>
-        <div>
+        <div class = "weight">
             <input v-model="weight_amount" type="number" min=0 placeholder="Enter the weight used in lbs">
         </div>
         <div>
             <b>Reps: </b>
         </div>
-        <div>
+        <div class = "reps">
             <input v-model="rep_amount" type="number" min=0 placeholder="Enter the amount of reps!">
         </div>
 
