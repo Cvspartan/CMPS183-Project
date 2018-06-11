@@ -63,7 +63,7 @@ div.select_box {
 
 
   border-radius: 4px;
-  border: 2px solid #FFF;
+  border: 2px solid gray;
 
   background: url("arrow3.png") no-repeat 98% center;
 
@@ -73,15 +73,18 @@ div.select_box {
 
 div.weight {
   border-radius: 4px;
-  border: 2px solid #FFF;
+  border: 2px solid gray;
+  padding: 5px;
   margin-bottom: 10px;
 }
 
 div.reps{
   border-radius: 4px;
-  border: 2px solid #FFF;
+  border: 2px solid gray;
+  padding: 5px;
 
 }
+
 
 
 
