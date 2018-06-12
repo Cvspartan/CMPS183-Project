@@ -5,15 +5,18 @@
 
 <div class="main_content">
 
+    <!-- If the user is logged in -->
     {{if auth.user is not None:}}
+        <!-- Logout button -->
         <div class="right">
-            <a class="btn btn-outline-primary small" href="{{=URL('default', 'user')}}">Logout</a>
+            <a class="btn btn-outline-primary small" href="{{=URL('default', 'user', args='logout')}}">Logout</a>
         </div>
 
         <div class="title">
             FitViz
         </div>
 
+        <!-- Menu buttons -->
         <div class="button_bar centered">
             <a class="btn btn-warning large" href="{{=URL('default','addWorkout')}}"><i class="fa fa-plus"></i> Add Workout</a>
             <a class="btn btn-info large" href="{{=URL('default','viewData')}}"><i class="fa fa-calendar"></i> View Workout Data</a>
@@ -21,6 +24,7 @@
 
     {{else:}}
 
+        <!-- If the user is not logged in -->
         <h1 class="main_title">Welcome!</h1>
 
         <p class="explanation">This site will help you analyze your workouts through data visualization.</p>
