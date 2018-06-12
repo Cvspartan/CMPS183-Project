@@ -69,6 +69,9 @@ var app = function() {
         )
     };
 
+    self.show_list_button = function(){
+        self.vue.show_list = !self.vue.show_list
+    };
 
     // Complete as needed.
     self.vue = new Vue({
@@ -78,6 +81,7 @@ var app = function() {
         data: {
             is_added: false,
             logged_in: false,
+            show_list: false,
             workouts: [],
             workout_name: null,
             weight_amount: '',
@@ -87,6 +91,7 @@ var app = function() {
         methods: {
             add_workout: self.add_workout,
             delete_workout: self.delete_workout,
+            show_list_button: self.show_list_button
         }
 
     });

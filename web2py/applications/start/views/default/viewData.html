@@ -13,36 +13,44 @@
     <div id="vue-div" class="display:none">
 
         <div>
-            <div v-for="workout in workouts">
-                <div class="memo">
-                    <div class="memo_text">
-                        <div class="memo_name">
-                            ${workout.name}
+            <!-- Show list developed from HW3 -->
+            <div v-if="show_list">
+                <div v-for="workout in workouts">
+                    <div class="memo">
+                        <div class="memo_text">
+                            <div class="memo_name">
+                                ${workout.name}
+                            </div>
+                            <p>
+                                ${workout.weight} lbs
+                            </p>
+                            <p>
+                                ${workout.reps} reps
+                            </p>
+                            <p>
+                                June ${workout.day_value}, 2018
+                            </p>
                         </div>
-                        <p>
-                            ${workout.weight} lbs
-                        </p>
-                        <p>
-                            ${workout.reps} reps
-                        </p>
-                        <p>
-                            June ${workout.day_value}, 2018
-                        </p>
+                        <div class = button_list>
+                            <button class="btn rounded btn-danger" v-on:click="delete_workout(workout.id)">
+                                <i class="fa fa-trash fa-lg"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class = button_list>
-                        <button class="btn rounded btn-danger" v-on:click="delete_workout(workout.id)">
-                            <i class="fa fa-trash fa-lg"></i>
-                        </button>
-                    </div>
-                </div>
                 <!-- <button type="button" v-on:click="get_workouts()">Add Data</button> -->
-             </div>
+                </div>
+            </div>
+            <!-- Top row of buttons-->
             <div class="button_bar center">
                 <a class="btn btn-warning large" href="{{=URL('default','addWorkout')}}"><i class="fa fa-plus"></i> Add Another Workout</a>
                 <a class="btn btn-info large" href="{{=URL('default','index')}}"><i class="fa fa-rotate-left"></i> Main Menu</a>
-                <a class="btn btn-secondary large" onclick="showPie(); return1(); toggler();"> Pie Chart</a>
-                <a class="btn btn-secondary large" onclick="showBar(); return2(); toggler();" > Bar Graph</a>
-                <a class="btn btn-secondary large" onclick="showLine(); return3(); toggler();"> Timeline</a>
+            </div>
+            <!-- Bottom row of buttons-->
+            <div class="button_bar center">
+                <a class="btn btn-outline-primary large" v-on:click="show_list_button()">Show List</a>
+                <a class="btn btn-outline-primary large" onclick="showPie(); return1(); toggler();"> Pie Chart</a>
+                <a class="btn btn-outline-primary large" onclick="showBar(); return2(); toggler();" > Bar Graph</a>
+                <a class="btn btn-outline-primary large" onclick="showLine(); return3(); toggler();"> Timeline</a>
             </div>
         </div>
     </div>
