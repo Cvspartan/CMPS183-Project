@@ -46,6 +46,9 @@
                     v-on:click="add_workout()">
                     <i class="fa fa-plus"></i> Submit
             </button>
+            <div v-if="is_added">
+                Workout added successfully!
+            </div>
         </div>
     </div>
 

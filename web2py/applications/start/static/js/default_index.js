@@ -41,6 +41,7 @@ var app = function() {
             function(data){
                 $.web2py.enableElement($("#add_workout_submit"));
                 self.vue.workouts.unshift(data.workout);
+                self.vue.is_added = true;
                 enumerate(self.vue.workouts);
             });
 
@@ -74,6 +75,7 @@ var app = function() {
         delimiters: ['${', '}'],
         unsafeDelimiters: ['!{', '}'],
         data: {
+            is_added: false,
             logged_in: false,
             workouts: [],
             workout_name: null,
