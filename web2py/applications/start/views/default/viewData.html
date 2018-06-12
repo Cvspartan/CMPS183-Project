@@ -27,28 +27,36 @@
                         </p>
                     </div>
                     <div class = button_list>
-                        <button class="btn rounded red" v-on:click="delete_workout(workout.id)">
+                        <button class="btn rounded gray" v-on:click="delete_workout(workout.id)">
                             <i class="fa fa-trash fa-lg"></i>
                         </button>
                     </div>
                 </div>
                 <!-- <button type="button" v-on:click="get_workouts()">Add Data</button> -->
              </div>
-            <div class="button_bar center">
-                <a class="btn btn-danger large" href="{{=URL('default','addWorkout')}}"><i class="fa fa-plus"></i> Add Another Workout</a>
-                <a class="btn btn-info large" href="{{=URL('default','index')}}"><i class="fa fa-rotate-left"></i> Main Menu</a>
+            <div class="button_bar">
+                <a class="btn yellow large" href="{{=URL('default','addWorkout')}}"><i class="fa fa-plus"></i> Add Another Workout</a>
+                <a class="btn aqua large" href="{{=URL('default','index')}}"><i class="fa fa-rotate-left"></i> Main Menu</a>
+                <a class="btn silver large" onclick="showPie(); return1(); toggler();"> Pie Chart</a>
+                <a class="btn silver large" onclick="showBar(); return2(); toggler();" > Bar Graph</a>
+                <a class="btn silver large" onclick="showLine(); return3(); toggler();"> Timeline</a>
             </div>
         </div>
     </div>
 </div>
 <!-- <button type="button" onclick="buttonPress(workouts)">Add Data</button> -->
 <script src= "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
-<div class = "chart_img">
-    <canvas id="myChart" width="10" height="10"></canvas>
-</div>
-
+<canvas id="myPieChart" width="10" height="3" style="display:none"></canvas>
+<canvas id="myBarChart" width="10" height="3" style="display:none"></canvas>
+<canvas id="myLineChart" width="10" height="3" style="display:none"></canvas>
 <script>
-        
+        var firstLoadPie = false;
+        var firstLoadBar = false;
+        var firstLoadLine = false;
+        var datalistPie = [];
+        var datalistBar = [];
+        var datalistLine = [];
+
         function get_workout_url(start_idx, end_idx){
             var pp ={
                 start_idx: start_idx,
@@ -57,55 +65,183 @@
             return get_workouts_url + "?" + $.param(pp)
         }
 
-        function get_workouts(){
+        //------------JSON Data Functions------------
+
+        function get_workouts_pie(){
             $.getJSON(get_workout_url(0,10), function(data){
                 for(var i = 0; i < data.workouts.length; i++){
                     var n = data.workouts[i].name;
                     var w = data.workouts[i].weight;
                     var r = data.workouts[i].reps;
-                    addData(myPie, n, w, r);
+                    if(firstLoadPie == false){
+                        addData(myPie, n, r);
+                    }
                 }
+                firstLoadPie = true;
             })
+        }
+        function get_workouts_bar(){
+            $.getJSON(get_workout_url(0,10), function(data){
+                for(var i = 0; i < data.workouts.length; i++){
+                    var n = data.workouts[i].name;
+                    var w = data.workouts[i].weight;
+                    var r = data.workouts[i].reps;
+                    if(firstLoadBar == false){
+                        addData(myBar, n, w);
+                    }
+                }
+                firstLoadBar = true;
+            })
+        }
+        function get_workouts_line(){
+            $.getJSON(get_workout_url(0,10), function(data){
+                for(var i = 0; i < data.workouts.length; i++){
+                    var n = data.workouts[i].name;
+                    var w = data.workouts[i].weight;
+                    var r = data.workouts[i].reps;
+                    if(firstLoadLine == false){
+                        addData(myLine, n, w);
+                    }
+                }
+                firstLoadLine = true;
+            })
+        }
+
+        var x = 0;
+        function return1() {
+            return x = 1;
+        }
+
+        function return2() {
+            return x = 2;
+        }
+        function return3() {
+            return x = 3;
+        }
+
+
+        function toggler() {
+            if( x == 1 ) {
+                disableAllCharts();
+                document.getElementById('myPieChart').style.display = "";
+            }
+            else if(x == 2) {
+                disableAllCharts();
+                document.getElementById('myBarChart').style.display = "";
+            }
+            else if(x == 3) {
+                disableAllCharts();
+                document.getElementById('myLineChart').style.display = "";
+            }
+        }
+
+        function disableAllCharts() {
+            document.getElementById('myBarChart').style.display = "none";
+            document.getElementById('myLineChart').style.display = "none";
+            document.getElementById('myPieChart').style.display = "none";
+        }
+
+        //------------Buttons------------
+
+        function showPie(){
+            document.getElementById('myBarChart').style.display = "none";
+            var ctx = document.getElementById('myPieChart').getContext('2d');
+            window.myPie = new Chart(ctx, config_pie);
+            get_workouts_pie();
+            //firstLoadPie = true;
+        }
+        function showBar(){
+            var ctx = document.getElementById('myBarChart').getContext('2d');
+            window.myBar = new Chart(ctx, config_bar);
+            get_workouts_bar();
+            //firstLoadBar = true;
+        }
+        function showLine(){
+            var ctx = document.getElementById('myLineChart').getContext('2d');
+            window.myLine = new Chart(ctx, config_line);
+            get_workouts_line();
+            //firstLoadLine = true;
+        }
+
+
+        window.onload = function() {
+            var ctx = document.getElementById('myLineChart').getContext('2d');
+            window.myBar = new Chart(ctx, config_bar);
+            get_workouts_bar();
         };
 
+        //------------Visualizations------------
 
-		window.onload = function() {
-			var ctx = document.getElementById('myChart').getContext('2d');
-			window.myPie = new Chart(ctx, config);
-			get_workouts();
-		};
+        var barChartData = {
+            labels: [],
+            datasets: [{
+                label: 'Last Workout',
+                backgroundColor: 'rgba(255, 255, 0, 0.8)',
+                borderColor: 'rgba(255, 255, 255, 0.8)',
+                borderWidth: 1,
+                data: [
+                15,
+                26,
+                17,
+                18,
+                23,
+                12
+                ]
+            }, {
+                label: 'Most Recent Workout',
+                backgroundColor: 'rgba(0, 120, 255, 0.8)',
+                borderColor: 'rgba(255, 255, 255, 0.8)',
+                borderWidth: 1,
+                data: datalistBar
+            }]
+        };
 
-		var config = {
-			type: 'pie',
-			data: {
-				datasets: [{
-					data: [
-					],
-					backgroundColor: [
-						'rgba(255, 99, 132, 0.8)',
-                    	'rgba(54, 162, 235, 0.8)',
-                    	'rgba(255, 206, 86, 0.8)',
-                    	'rgba(75, 192, 192, 0.2)',
-                    	'rgba(153, 102, 255, 0.2)',
-                    	'rgba(255, 159, 64, 0.2)'
-					],
-					label: 'Dataset 1'
-				}],
-				labels: [
-				]
-			},
-			options: {
-				responsive: true
-			}
-		};
+        var config_bar = {
+                type: 'bar',
+                data: barChartData,
+                options: {
+                    responsive: true,
+                    legend: {
+                        position: 'top',
+                    }
+                }
+        };
 
+        var config_pie = {
+            type: 'pie',
+            data: {
+                datasets: [{
+                    data: datalistPie,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(54, 162, 235, 0.8)',
+                        'rgba(255, 206, 86, 0.8)',
+                        'rgba(75, 192, 192, 0.8)',
+                        'rgba(153, 102, 255, 0.8)',
+                        'rgba(255, 159, 64, 0.8)'
+                    ],
+                    label: 'Dataset 1'
+                }],
+                labels: []
+            },
+            options: {
+                responsive: true,
+                legend: {
+                        position: 'top',
+                    }
+            }
+        };
+        
         function addData(chart, label, data) {
             chart.data.labels.push(label);
-            chart.data.datasets.forEach((dataset) => {
-                dataset.data.push(data);
-                //dataset.backgroundColor.push(color);
-            });
+            if(chart == window.myPie){
+                datalistPie.push(data);
+            }else if(chart == window.myBar){
+                datalistBar.push(data);
+            }else if(chart == window.myLine){
+                datalistLine.push(data);
+            }
             chart.update();
         }
-	</script>
+</script>
 <script src="{{=URL('static', 'js/default_index.js')}}"></script>
