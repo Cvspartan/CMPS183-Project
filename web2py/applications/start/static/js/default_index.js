@@ -36,7 +36,8 @@ var app = function() {
             {
                 name: self.vue.workout_name,
                 reps: self.vue.rep_amount,
-                weight: self.vue.weight_amount
+                weight: self.vue.weight_amount,
+                day_value: self.vue.date_value
             },
             function(data){
                 $.web2py.enableElement($("#add_workout_submit"));
@@ -80,7 +81,8 @@ var app = function() {
             workouts: [],
             workout_name: null,
             weight_amount: '',
-            rep_amount: ''
+            rep_amount: '',
+            date_value: 0
         },
         methods: {
             add_workout: self.add_workout,

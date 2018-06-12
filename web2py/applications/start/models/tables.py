@@ -17,7 +17,8 @@ db.define_table('workout',
                 Field('updated_on', 'datetime', update=datetime.datetime.utcnow()),
                 Field('name'),
                 Field('weight', 'float'),
-                Field('reps', 'float')
+                Field('reps', 'float'),
+                Field('day_value', 'integer')
                 )
 
 # after defining tables, uncomment below to enable auditing

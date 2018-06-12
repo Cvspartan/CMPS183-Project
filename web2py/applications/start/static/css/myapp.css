@@ -73,17 +73,23 @@ div.select_box {
 }
 
 div.weight {
-  border-radius: 4px;
-  border: 2px solid gray;
-  padding: 5px;
-  margin-bottom: 10px;
+    border-radius: 4px;
+    border: 2px solid gray;
+    padding: 5px;
+    margin-bottom: 10px;
 }
 
 div.reps{
-  border-radius: 4px;
-  border: 2px solid gray;
-  padding: 5px;
+    border-radius: 4px;
+    border: 2px solid gray;
+    padding: 5px;
+    margin-bottom: 10px;
+}
 
+div.date{
+    border-radius: 4px;
+    border: 2px solid gray;
+    padding: 5px;
 }
 
 div.chart_img{

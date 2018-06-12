@@ -18,17 +18,19 @@
         <div class = "select_box">
             <select required v-model="workout_name">
                 <option disabled selected>Select your exercise</option>
-                <option value="Deadlift">Deadlift</option>
-                <option value="Squat">Squat</option>
+                <option value="Back extension">Back extension</option>
                 <option value="Bench Press">Bench Press</option>
                 <option value="Biceps Curl">Biceps Curl</option>
                 <option value="Chest Fly">Chest Fly</option>
+                <option value="Deadlift">Deadlift</option>
                 <option value="Leg Press">Leg Press</option>
                 <option value="Leg Extension">Leg Extension</option>
+                <option value="Push-up">Push-up</option>
+                <option value="Pull-up">Pull-up</option>
+                <option value="Squat">Squat</option>
             </select>
         </div>
         <div>
-            <br />
             <b>Weight: </b>
         </div>
         <div class = "weight">
@@ -39,6 +41,12 @@
         </div>
         <div class = "reps">
             <input v-model="rep_amount" type="number" min=0 placeholder="Enter the amount of reps!">
+        </div>
+        <div>
+            <b>Enter the day in June: </b>
+        </div>
+        <div class= "date">
+            <input v-model="date_value" type="number" min=0 max=30 placeholder="Enter the day in June!">
         </div>
 
         <div class="button_bar">
