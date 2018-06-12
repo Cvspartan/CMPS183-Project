@@ -27,19 +27,19 @@
                         </p>
                     </div>
                     <div class = button_list>
-                        <button class="btn rounded gray" v-on:click="delete_workout(workout.id)">
+                        <button class="btn rounded btn-danger" v-on:click="delete_workout(workout.id)">
                             <i class="fa fa-trash fa-lg"></i>
                         </button>
                     </div>
                 </div>
                 <!-- <button type="button" v-on:click="get_workouts()">Add Data</button> -->
              </div>
-            <div class="button_bar">
-                <a class="btn yellow large" href="{{=URL('default','addWorkout')}}"><i class="fa fa-plus"></i> Add Another Workout</a>
-                <a class="btn aqua large" href="{{=URL('default','index')}}"><i class="fa fa-rotate-left"></i> Main Menu</a>
-                <a class="btn silver large" onclick="showPie(); return1(); toggler();"> Pie Chart</a>
-                <a class="btn silver large" onclick="showBar(); return2(); toggler();" > Bar Graph</a>
-                <a class="btn silver large" onclick="showLine(); return3(); toggler();"> Timeline</a>
+            <div class="button_bar center">
+                <a class="btn btn-warning large" href="{{=URL('default','addWorkout')}}"><i class="fa fa-plus"></i> Add Another Workout</a>
+                <a class="btn btn-info large" href="{{=URL('default','index')}}"><i class="fa fa-rotate-left"></i> Main Menu</a>
+                <a class="btn btn-secondary large" onclick="showPie(); return1(); toggler();"> Pie Chart</a>
+                <a class="btn btn-secondary large" onclick="showBar(); return2(); toggler();" > Bar Graph</a>
+                <a class="btn btn-secondary large" onclick="showLine(); return3(); toggler();"> Timeline</a>
             </div>
         </div>
     </div>
