@@ -50,7 +50,7 @@
                 <a class="btn silver" v-on:click="show_list_button()">Show List</a>
                 <a class="btn silver" onclick="showPie(); return1(); toggler();"> Pie Chart</a>
                 <a class="btn silver" onclick="showBar(); return2(); toggler();" > Bar Graph</a>
-                <a class="btn silver" onclick="showLine(); return3(); toggler();"> Timeline</a>
+                <a class="btn silver" onclick="showScatter(); return3(); toggler();"> Scatter Chart</a>
             </div>
         </div>
     </div>
@@ -59,14 +59,17 @@
 <script src= "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
 <canvas id="myPieChart" width="10" height="3" style="display:none"></canvas>
 <canvas id="myBarChart" width="10" height="3" style="display:none"></canvas>
-<canvas id="myLineChart" width="10" height="3" style="display:none"></canvas>
+<canvas id="myScatterChart" width="10" height="3" style="display:none"></canvas>
 <script>
         var firstLoadPie = false;
         var firstLoadBar = false;
-        var firstLoadLine = false;
+        var firstLoadScatter = false;
         var datalistPie = [];
         var datalistBar = [];
-        var datalistLine = [];
+        var datalistScatterx = [], datalistScatterx1 = [], datalistScatterx2 = [], datalistScatterx3 = [], datalistScatterx4 = [];
+        var datalistScattery = [], datalistScattery1 = [], datalistScattery2 = [], datalistScattery3 = [], datalistScattery4 = [];
+        var label1 = [], label2 = [], label3 = [], label4 = [], label5 = [];
+        var counter = 0;
 
         function get_workout_url(start_idx, end_idx){
             var pp ={
@@ -104,19 +107,22 @@
                 firstLoadBar = true;
             })
         }
-        function get_workouts_line(){
+        function get_workouts_scatter(){
             $.getJSON(get_workout_url(0,10), function(data){
                 for(var i = 0; i < data.workouts.length; i++){
                     var n = data.workouts[i].name;
                     var w = data.workouts[i].weight;
                     var r = data.workouts[i].reps;
-                    if(firstLoadLine == false){
-                        addData(myLine, n, w);
+                    if(firstLoadScatter == false){
+                        addDataScatter(myScatter, n, w, r);
                     }
+                    counter++;
                 }
-                firstLoadLine = true;
+                firstLoadScatter = true;
             })
         }
+
+        //------------Hide/Toggle Visualization Chart Canvases------------
 
         var x = 0;
         function return1() {
@@ -142,47 +148,46 @@
             }
             else if(x == 3) {
                 disableAllCharts();
-                document.getElementById('myLineChart').style.display = "";
+                document.getElementById('myScatterChart').style.display = "";
             }
         }
 
         function disableAllCharts() {
             document.getElementById('myBarChart').style.display = "none";
-            document.getElementById('myLineChart').style.display = "none";
+            document.getElementById('myScatterChart').style.display = "none";
             document.getElementById('myPieChart').style.display = "none";
         }
 
-        //------------Buttons------------
+        //------------Buttons To Instantiate Canvases------------
 
         function showPie(){
-            document.getElementById('myBarChart').style.display = "none";
+            //document.getElementById('myBarChart').style.display = "none";
             var ctx = document.getElementById('myPieChart').getContext('2d');
             window.myPie = new Chart(ctx, config_pie);
             get_workouts_pie();
-            //firstLoadPie = true;
         }
         function showBar(){
             var ctx = document.getElementById('myBarChart').getContext('2d');
             window.myBar = new Chart(ctx, config_bar);
             get_workouts_bar();
-            //firstLoadBar = true;
         }
-        function showLine(){
-            var ctx = document.getElementById('myLineChart').getContext('2d');
-            window.myLine = new Chart(ctx, config_line);
-            get_workouts_line();
-            //firstLoadLine = true;
-        }
+        function showScatter(){
+            var ctx = document.getElementById('myScatterChart').getContext('2d');
+            window.myScatter = new Chart(ctx, config_scatter);
+            get_workouts_scatter();
 
+        }
 
         window.onload = function() {
-            var ctx = document.getElementById('myLineChart').getContext('2d');
+            var ctx = document.getElementById('myBarChart').getContext('2d');
             window.myBar = new Chart(ctx, config_bar);
             get_workouts_bar();
         };
 
         //------------Visualizations------------
-
+    
+        //------------Bar Chart------------
+    
         var barChartData = {
             labels: [],
             datasets: [{
@@ -214,9 +219,27 @@
                     responsive: true,
                     legend: {
                         position: 'top',
-                    }
+                    },
+                    scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Exercise'
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Weight'
+                        }
+                    }]
+                }
                 }
         };
+    
+        //------------Pie Chart------------
 
         var config_pie = {
             type: 'pie',
@@ -242,17 +265,104 @@
                     }
             }
         };
+    
+        //------------Scatter Chart------------
+
+        var config_scatter = {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        label: label1,
+                        borderColor: 'rgba(255, 99, 132, 0.8)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.8)',
+                        data: [{
+                            x: datalistScatterx,
+                            y: datalistScattery,
+                        }]
+                        }, {
+                        label: label2,
+                        borderColor: 'rgba(54, 162, 235, 0.8)',
+                        backgroundColor: 'rgba(54, 162, 235, 0.8)',
+                        data: [{
+                            x: datalistScatterx1,
+                            y: datalistScattery1,
+                        }],
+                        }, {
+                        label: label3,
+                        borderColor: 'rgba(255, 206, 86, 0.8)',
+                        backgroundColor: 'rgba(255, 206, 86, 0.8)',
+                        data: [{
+                            x: datalistScatterx2,
+                            y: datalistScattery2,
+                        }],
+                        }, {
+                        label: label4,
+                        borderColor: 'rgba(75, 192, 192, 0.8)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.8)',
+                        data: [{
+                            x: datalistScatterx3,
+                            y: datalistScattery3,
+                        }],
+                        }, {
+                        label: label5,
+                        borderColor: 'rgba(153, 102, 255, 0.8)',
+                        backgroundColor: 'rgba(153, 102, 255, 0.8)',
+                        data: [{
+                            x: datalistScatterx4,
+                            y: datalistScattery4,
+                        }]
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            type: 'linear',
+                            position: 'bottom'
+                        }]
+                    }
+                }
+        };
+    
+        //------------addData Functions------------
         
         function addData(chart, label, data) {
-            chart.data.labels.push(label);
             if(chart == window.myPie){
+                chart.data.labels.push(label);
                 datalistPie.push(data);
             }else if(chart == window.myBar){
+                chart.data.labels.push(label);
                 datalistBar.push(data);
-            }else if(chart == window.myLine){
-                datalistLine.push(data);
             }
             chart.update();
+        }
+        function addDataScatter(chart, label, data, data1){
+                if(counter == 0){
+                    label1.push(label);
+                    datalistScatterx.push(data1);
+                    datalistScattery.push(data);
+                    console.log("hello");
+                }
+                else if(counter == 1){
+                    label2.push(label);
+                    datalistScatterx1.push(data1);
+                    datalistScattery1.push(data);
+                }
+                else if(counter == 2){
+                    label3.push(label);
+                    datalistScatterx2.push(data1);
+                    datalistScattery2.push(data);
+                }
+                else if(counter == 3){
+                    label4.push(label);
+                    datalistScatterx3.push(data1);
+                    datalistScattery3.push(data);
+                }
+                else if(counter == 4){
+                    label5.push(label);
+                    datalistScatterx4.push(data1);
+                    datalistScattery4.push(data);
+                }
+                chart.update();
         }
 </script>
 <script src="{{=URL('static', 'js/default_index.js')}}"></script>
