@@ -97,8 +97,6 @@ div.chart_img{
   height: 30%;
 }
 
-
-
 .centered {
     position: fixed;
     top: 50%;
@@ -107,5 +105,12 @@ div.chart_img{
 }
 
 .title{
+    position: fixed;
     font-size: 1300%;
+    left: 50%;
+    margin-left: -230px;
+}
+
+.white{
+    font-color: #ffffff
 }

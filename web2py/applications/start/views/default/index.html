@@ -5,27 +5,30 @@
 
 <div class="main_content">
 
-  {{if auth.user is not None:}}
+    {{if auth.user is not None:}}
+        <div class="right">
+            <a class="btn btn-outline-primary small" href="{{=URL('default', 'user')}}">Logout</a>
+        </div>
 
-    <div class="title center">
-        FitViz
-    </div>
+        <div class="title">
+            FitViz
+        </div>
 
-    <div class="button_bar centered">
-        <a class="btn btn-warning large" href="{{=URL('default','addWorkout')}}"><i class="fa fa-plus"></i> Add Workout</a>
-        <a class="btn btn-info large" href="{{=URL('default','viewData')}}"><i class="fa fa-calendar"></i> View Workout Data</a>
-    </div>
+        <div class="button_bar centered">
+            <a class="btn btn-warning large" href="{{=URL('default','addWorkout')}}"><i class="fa fa-plus"></i> Add Workout</a>
+            <a class="btn btn-info large" href="{{=URL('default','viewData')}}"><i class="fa fa-calendar"></i> View Workout Data</a>
+        </div>
 
     {{else:}}
 
-    <h1 class="main_title">Welcome!</h1>
+        <h1 class="main_title">Welcome!</h1>
 
-    <p class="explanation">This site will help you organize your workouts with data visualization.</p>
+        <p class="explanation">This site will help you analyze your workouts through data visualization.</p>
 
-    <div class="login_button">
-        <a class="btn btn-warning" href="{{=URL('default', 'user')}}">Login</a>
-    </div>
+        <div class="login_button">
+            <a class="btn btn-warning" href="{{=URL('default', 'user')}}">Login</a>
+        </div>
 
-  {{pass}}
+    {{pass}}
 
 </div>
