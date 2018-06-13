@@ -317,8 +317,19 @@
                     scales: {
                         xAxes: [{
                             type: 'linear',
-                            position: 'bottom'
-                        }]
+                            position: 'bottom',
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Reps'
+                        }
+                        }],
+                        yAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Weight'
+                        }
+                    }]
                     }
                 }
         };
